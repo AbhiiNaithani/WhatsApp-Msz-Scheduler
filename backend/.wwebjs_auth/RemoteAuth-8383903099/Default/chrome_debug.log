@@ -1,0 +1,16 @@
+[0726/213350.487:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Feature xr-spatial-tracking's parameters are ignored.", source:  (0)
+[0726/213350.487:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'attribution-reporting'.", source:  (0)
+[0726/213350.502:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'battery'.", source:  (0)
+[0726/213350.502:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'compute-pressure'.", source:  (0)
+[0726/213350.503:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.", source:  (0)
+[0726/213350.503:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'private-state-token-issuance'.", source:  (0)
+[0726/213350.504:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'shared-storage'.", source:  (0)
+[0726/213350.504:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'shared-storage-select-url'.", source:  (0)
+[0726/213350.504:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'private-state-token-redemption'.", source:  (0)
+[0726/213350.504:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'usb-unrestricted'.", source:  (0)
+[0726/213350.504:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'unload'.", source:  (0)
+[0726/213350.504:INFO:CONSOLE(0)] "Error with Permissions-Policy header: Unrecognized feature: 'window-management'.", source:  (0)
+[0726/213352.684:ERROR:leveldb_factory.cc(88)] Failed to open LevelDB database from E:\Projects\WhatsApp_Msz_Scheduler\backend\.wwebjs_auth\RemoteAuth-8383903099\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb,Corruption: checksum mismatch
+[0726/213352.684:ERROR:indexed_db_factory_impl.cc(708)] Got corruption for { origin: https://web.whatsapp.com, top-level site: https://whatsapp.com, nonce: <null>, ancestor chain bit: Same-Site }, checksum mismatch
+[0726/213352.694:ERROR:indexed_db_factory_impl.cc(844)] IndexedDB recovering from a corrupted (and deleted) database.
+[0726/213355.881:INFO:CONSOLE(133)] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v3/yj/r/naQErJ3BDMl.js?_nc_x=Ij3Wp8lg5Kz (133)
