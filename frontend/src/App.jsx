@@ -1,47 +1,29 @@
-import { useEffect, useState } from 'react'
-import QRCode from "react-qr-code";
-import axios from "axios";
-import {io} from "socket.io-client";
-
-
-const socket = io("http://localhost:3000",{});
+import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom';
+import {Login} from './pages/Login';
+import {Landing} from './pages/Landing';
+import {Schedule} from './pages/Schedule';
+import {AllSchedules} from './pages/AllSchedules';
+import {PendingSchedules} from './pages/PendingSchedules';
+import {CompletedSchedules} from './pages/CompletedSchedules';
+import './App.css';
 
 function App() {
-  const [qrCode, setQrCode] = useState("");
-  const [session, setSession] = useState(0);
-
-  const startSession = async () => {
-    console.log('starting session');
-    socket.emit('startSession', { id : '8383903099'});
-    setSession(1);
-  }
   
-  useEffect(() => {
-    // generateSession();
-    socket.emit('connected', 'Hello from the Client');
-    
-    if(session){
-      socket.on('qr', (data) => {
-        console.log('qr ', data.qr);
-        setQrCode(data.qr);
-      })
-
-      socket.on('ready',(data) => {
-        console.log(data?.userId);
-        setSession(0);
-      })
-    }
-    
-  },[session])
 
   return (
     <>
-      <div>
-        <button onClick={startSession}>Start</button>
-  <QRCode
-    value={qrCode}
-  />
-</div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element = {<Navigate to='login'/>}/>
+          <Route path='login' element = {<Login/>} />
+          <Route path='landing' element = {<Landing/>} >
+            <Route path='addSchedule' element = {<Schedule/>} />
+            <Route path='allSchedules' element = {<AllSchedules/>} />
+            <Route path='pendingSchedules' element = {<PendingSchedules/>} />
+            <Route path='completedSchedules' element = {<CompletedSchedules/>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

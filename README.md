@@ -5,12 +5,12 @@ WhatsApp Message Scheduler is a web application that allows users to schedule me
 
 ## Features
 
-- **Recurring Messages:** Schedule messages to be sent daily, weekly, or monthly.
+- **Recurring Messages:** Schedule messages to be sent daily, weekly, or monthly. (Later)
 - **Multi-Recipient Scheduling:** Send messages to multiple recipients or groups.
-- **Attachment Scheduling:** Schedule messages with images, documents, and videos.
-- **Message Analytics:** Track delivery status, read receipts, and engagement metrics.
+- **Attachment Scheduling:** Schedule messages with images, documents, and videos. (Later)
+- **Message Analytics:** Track delivery status,and engagement metrics.
 - **Timezone Support:** Adjust send times based on recipient timezones.
-- **Voice and Video Message Scheduling:** Schedule voice and video messages.
+- **Voice and Video Message Scheduling:** Schedule voice and video messages. (Later)
 
 ## Installation
 

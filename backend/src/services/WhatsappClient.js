@@ -66,6 +66,7 @@ const startSession = async ({id, socket}) => {
     const client = new Client({
         puppeteer: {
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            headless: true
         },
         // authStrategy: new RemoteAuth({
         //     clientId: id,
@@ -78,7 +79,7 @@ const startSession = async ({id, socket}) => {
     client.on('ready', async () => {
         
         context.set('client', client);
-        const url = await client.getProfilePicUrl(client.info.wid._serialized);
+        const url = await client?.getProfilePicUrl(client.info.wid._serialized);
     
         const contacts = await client.getContacts();
 
@@ -129,6 +130,9 @@ const startSession = async ({id, socket}) => {
 
     client.on('authenticated', async () => {
         console.log('Authenticated');
+        socket.emit('authenticated', {
+            authentication: 'done',
+        })
     })
     // When the client received QR-Code
     client.on('qr', (qr) => {

@@ -28,9 +28,13 @@ const scheduleSchema = new mongoose.Schema({
     message: String,
     mediaFilePath: String,
     mediaUrl: String,
-    to: [String],
+    to: [{
+        name: String,
+        serialized: String,
+        id: String,
+    }],
     from: String, 
-    secheduleAt: Date,
+    scheduleAt: Date,
 })
 
 const User = db1.model('User', userSchema);
