@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Banckend_URL } from "../constants";
+import { ScheduleCard } from "../components/scheduleCard";
 
 export const AllSchedules = () => {
     const [allSchedules, setAllSchedules] = useState([]);
@@ -15,11 +16,11 @@ export const AllSchedules = () => {
     },[])
 
     return(
-        <div>
+        <div className="w-full h-full overflow-y-auto">
             {allSchedules.map((schedule) => {
                 return(
-                    <div key={schedule._id}>
-                        {schedule.message}
+                    <div key={schedule._id} className="w-full h-1/6">
+                        <ScheduleCard schedule={schedule} callbackFn={getAllSchedules}/>
                     </div>
                 )
             })}

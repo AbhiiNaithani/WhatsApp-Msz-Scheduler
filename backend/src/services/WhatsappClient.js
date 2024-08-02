@@ -1,66 +1,10 @@
 const { Client, RemoteAuth } = require('whatsapp-web.js');
 // const qrcode = require('qrcode-terminal');
 const { User } = require('../db');
-// const mongoose = require('mongoose');
-// const {MongoStore} = require('wwebjs-mongo');
 const context = require('../context');
-// const MONGODB_URI = 'mongodb+srv://abhinaithani2:mB36Z2xgZnoYHiMU@vampire.8dtzv2g.mongodb.net/whatsapp-message-scheduler-sessions';
-
-// let store;
-// mongoose.connect(MONGODB_URI).then(() => {
-//     store = new MongoStore({mongoose: mongoose});
-// });
-
-// const sendMessage = async ({id, socket,to,msz}) => {
-//     const client = new Client({
-//         puppeteer: {
-//             args: ['--no-sandbox', '--disable-setuid-sandbox'],
-//         },
-//         // authStrategy: new RemoteAuth({
-//         //     clientId: id,
-//         //     store: store,
-//         //     backupSyncIntervalMs: 300000
-//         // })
-//     });
-
-    
-//     // When the client is ready, run this code (only once)
-//     client.on('ready', async () => {
-//         // console.log('Client is ready!');
-
-        
-        
-//         // socket.emit('ready', {
-//         //     // id: user._id,
-//         //     id
-//         // })
-//     });
 
 
-//     client.on('authenticated', () => {
-//         console.log('Authenticated');
-//     })
-//     // When the client received QR-Code
-//     client.on('qr', (qr) => {
-//         console.log('QR RECEIVED', qr);
-//         socket.emit('qr', {
-//             qr,
-//         })
-//     });
-
-//     client.on('remote_session_saved',async () => {
-//         console.log('remote session saved');
-        
-//         //store {name phnNo id} in user
-//     })
-
-//     await client.initialize();
-//     await client.sendMessage(to,msz);
-//     console.log('message sent');
-
-// }
-
-const startSession = async ({id, socket}) => {
+const startSession = async ({socket}) => {
     // Create a new client instance
     
     const client = new Client({
@@ -157,5 +101,4 @@ const startSession = async ({id, socket}) => {
 
 module.exports = {
     startSession,
-    // sendMessage
 }

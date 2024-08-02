@@ -11,30 +11,30 @@ export const Landing = () => {
     const id = localStorage.getItem('userId');
     // const id = '66a453dbf1cfbe3b2d43f798';
     const [userData, setUserData] = useState({});
-    const [activeTab,setActiveTab] = useState('addSchedule');
+    const [activeTab,setActiveTab] = useState(1);
     const navigate = useNavigate();
 
     const addScheduleHandler = () => {
-        setActiveTab('addSchedule');
+        setActiveTab(1);
         navigate('addSchedule');
     }
 
     const allScheduleHandler = () => {
-        setActiveTab('allSchedules');
+        setActiveTab(2);
         navigate('allSchedules');
     }
 
     const pendingScheduleHandler = () => {
-        setActiveTab('pending');
+        setActiveTab(3);
         navigate('pendingSchedules');
     }
 
     const completedScheduleHandler = () => {
-        setActiveTab('completed');
+        setActiveTab(4);
         navigate('completedSchedules');
     }
     const logOutHandler = () => {
-        // localStorage.removeItem('userId');
+        localStorage.removeItem('userId');
         navigate('/');
     }
 
@@ -64,10 +64,10 @@ export const Landing = () => {
                     <div>{userData?.phoneNumber}</div>
                 </div>
                 <div className='flex flex-col w-full text-lg'>
-                    <div onClick={addScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 'addSchedule' ? 'active' : ''}`}><FaPlus className='inline align-middle mr-4' size={18} /> Add Schedule</div>
-                    <div onClick={allScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer${activeTab === 'allSchedules' ? 'active' : ''}`}><FaListUl className='inline align-middle mr-4' size={18} /> All Schedules</div>
-                    <div onClick={pendingScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 'pending' ? 'active' : ''}`}><FaClipboard className='inline align-middle mr-4' size={18} /> Pending</div>
-                    <div onClick={completedScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 'completed' ? 'active' : ''}`}><FaCheck className='inline align-middle mr-4' size={18} /> Completed</div>
+                    <div onClick={addScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 1 ? 'active' : ''}`}><FaPlus className='inline align-middle mr-4' size={18} /> Add Schedule</div>
+                    <div onClick={allScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 2 ? 'active' : ''}`}><FaListUl className='inline align-middle mr-4' size={18} /> All Schedules</div>
+                    <div onClick={pendingScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 3 ? 'active' : ''}`}><FaClipboard className='inline align-middle mr-4' size={18} /> Pending</div>
+                    <div onClick={completedScheduleHandler} className={`px-4 py-2 hover:text-green-700 cursor-pointer ${activeTab === 4 ? 'active' : ''}`}><FaCheck className='inline align-middle mr-4' size={18} /> Completed</div>
                 </div>
                 <div onClick={logOutHandler} className='px-4 hover:text-green-700 cursor-pointer text-lg'><FaSignOutAlt className='inline align-middle' size={24} />  Log Out</div>
             </div>

@@ -113,9 +113,9 @@ export const Schedule = () => {
                         <input ref={inputRef} onInput={recipientInputHandler} onFocus={() => setShowContacts(1)}  className="w-full h-full bg-stone-900 focus:outline-none focus:border-transparent " placeholder="Find recepient here"  type='search'/>
                     </div>
                     {showContacts? <div className="h-full w-full overflow-y-auto py-2">
-                        {filteredContacts.map((contact,key) => {
+                        {filteredContacts.map((contact) => {
                             return(
-                                <div key={key} className="w-full mb-2">
+                                <div key={contact._id} className="w-full mb-2">
                                     <ContactCard contact={contact} recepient={recepient} setRecepient={setRecepient} />
                                 </div>
                             )

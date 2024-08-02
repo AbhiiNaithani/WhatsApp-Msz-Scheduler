@@ -27,10 +27,8 @@ io.on('connection', (socket) => {
         socket.emit("hello", "Hello from the server");
     });
 
-    socket.on('startSession', async (data) => {
-        console.log(data);
-        const {id} = data;
-        await startSession({id, socket});
+    socket.on('startSession', async () => {
+        await startSession({socket});
     })
 });
 

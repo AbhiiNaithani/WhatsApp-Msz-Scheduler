@@ -23,7 +23,7 @@ export const Login = () => {
 
   const startSession = async () => {
     console.log('starting session');
-    socket.emit('startSession', { id : '8826608426'});
+    socket.emit('startSession');
     setQrLoading(true);
     setSession(1);
     // navigate('/landing/addSchedule');

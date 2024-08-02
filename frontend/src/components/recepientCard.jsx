@@ -1,8 +1,8 @@
 import { RxCross2 } from "react-icons/rx";
 export const RecepientCard = ({contact,recepient,setRecepient,showContactsHandler,showContacts}) => {
     const deleteHandler = () => {
-        const newList = recepient.filter((cont) => cont.id !== contact._id);
-        setRecepient(newList);
+        const newList = recepient.filter((cont) => cont.id !== contact.id);
+        setRecepient([...newList]);
         if(showContacts){
             showContactsHandler();
         }

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 
 export const ContactCard = ({contact,recepient,setRecepient}) => {
-    const [isActive,setIsActive] = useState(recepient?.includes(contact));
+    const [isActive,setIsActive] = useState(recepient?.find((cont) => cont.id === contact._id));
     const selectionHandler = () => {
         let newList = [];
         if(isActive){
