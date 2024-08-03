@@ -6,6 +6,17 @@ const http = require('http');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+app.use(cors({
+    origin: 'https://whatsapp-msz-scheduler-frontend.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+    credentials: true // Allow credentials like cookies, authorization headers, etc.
+  }));
+
+app.use(express.json());
+
+app.use('/api/v1/',mainRouter);
+
 const server = http.createServer(app);
 const {Server} = require('socket.io');
 const {startSession,} = require('./src/services/WhatsappClient');
@@ -14,7 +25,7 @@ const { frontend_URL } = require('./src/constants');
 const io = new Server(server,{
     cors: {
         origin: 'https://whatsapp-msz-scheduler-frontend.onrender.com',
-        methods: ['GET', 'POST'],
+        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
         credentials: true
       }
 });
@@ -35,15 +46,6 @@ io.on('connection', (socket) => {
         await startSession({socket});
     })
 });
-
-app.use(cors({
-    origin: 'https://whatsapp-msz-scheduler-frontend.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
-    credentials: true // Allow credentials like cookies, authorization headers, etc.
-  }));
-app.use(express.json());
-
-app.use('/api/v1/',mainRouter);
 
 server.listen(PORT, () => {
     console.log(`server started at ${PORT}`);
