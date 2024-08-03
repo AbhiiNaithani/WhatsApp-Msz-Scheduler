@@ -8,6 +8,7 @@ import { MdOutlinePersonSearch } from "react-icons/md";
 import { Banckend_URL } from "../constants";
 import { ContactCard } from "../components/contactCard";
 import { RecepientCard } from "../components/recepientCard";
+import Loader from 'react-js-loader'
 
 
 
@@ -21,6 +22,7 @@ export const Schedule = () => {
     const [allContacts, setAllContacts] = useState([]);
     const [filteredContacts, setFilteredContacts] = useState([]);
     const [showContacts, setShowContacts] = useState(0);
+    const [isLoading,setIsLoading] = useState(0);
 
     const messageInputHandler = (e) => {
         setMessage(e.target.value);
@@ -62,7 +64,8 @@ export const Schedule = () => {
             return;
         }
         // api call to schedule task
-        const response = await axios.post(Banckend_URL + `/scheduleMessage`,{
+        setIsLoading(true);
+        await axios.post(Banckend_URL + `/scheduleMessage`,{
             message : message,
             mediaFilePath : "" ,
             mediaUrl : "", 
@@ -70,21 +73,26 @@ export const Schedule = () => {
             from : localStorage.getItem('userId'),
             scheduleAt : scheduleAt,
         })
-        // setMessage('');
-        // setScheduleAt('');
-        // setRecepient([]);
+
+        setMessage('');
+        setScheduleAt('');
+        setRecepient([]);
+        
+        setIsLoading(false);
     }
 
     useEffect(() => {
         getAllContacts();
     },[]);
     
-    return(
+    return(isLoading? <div className='flex h-full w-full justify-center'>
+        <Loader type="spinner-cub" bgColor={'#25D366'} size={60} />
+      </div> :
         <div className="flex h-full w-full justify-between ">
                 <div className="h-full w-1/2">
                     <textarea value={message} onInput={messageInputHandler} placeholder="Type here....." className="bg-stone-900 rounded-md resize-none border-2 border-stone-700 h-1/2 w-full overflow-y-auto p-2" />
                     <div className="flex justify-end mb-2">
-                        <div onClick={scheduleMessageHandler} className="w-1/4 h-1/10 bg-green-600 rounded-md border-2 border-stone-700 hover:bg-green-700 text-center p-2">
+                        <div onClick={scheduleMessageHandler} className="w-1/4 h-1/10 bg-green-600 rounded-md border-2 border-stone-700 hover:bg-green-700 text-center p-2 cursor-pointer">
                             Schedule
                         </div>
                     </div>
@@ -109,7 +117,7 @@ export const Schedule = () => {
                 />
                 <div className="flex flex-col h-full w-1/4">
                     <div className="w-full flex items-center h-10 bg-stone-900 rounded-md p-2 rounded border-2 border-stone-700">
-                        <MdOutlinePersonSearch onClick={showContactsHandler} className="text-white mr-2 hover:text-green-600" size={24}/>
+                        <MdOutlinePersonSearch onClick={showContactsHandler} className="text-white mr-2 hover:text-green-600 cursor-pointer" size={24}/>
                         <input ref={inputRef} onInput={recipientInputHandler} onFocus={() => setShowContacts(1)}  className="w-full h-full bg-stone-900 focus:outline-none focus:border-transparent " placeholder="Find recepient here"  type='search'/>
                     </div>
                     {showContacts? <div className="h-full w-full overflow-y-auto py-2">

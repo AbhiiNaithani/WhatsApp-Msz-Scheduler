@@ -3,15 +3,17 @@ const cors = require( 'cors' );
 const mainRouter = require('./src/routes')
 const http = require('http');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 const server = http.createServer(app);
 const {Server} = require('socket.io');
 const {startSession,} = require('./src/services/WhatsappClient');
+const { frontend_URL } = require('./src/constants');
+
 const io = new Server(server,{
     cors: {
-        origin: "http://localhost:5173"
+        origin: frontend_URL
       }
 });
 

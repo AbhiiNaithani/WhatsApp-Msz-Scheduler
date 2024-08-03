@@ -9,7 +9,6 @@ import { FaPlus, FaListUl, FaCheck, FaClipboard, FaSignOutAlt} from "react-icons
 
 export const Landing = () => {
     const id = localStorage.getItem('userId');
-    // const id = '66a453dbf1cfbe3b2d43f798';
     const [userData, setUserData] = useState({});
     const [activeTab,setActiveTab] = useState(1);
     const navigate = useNavigate();

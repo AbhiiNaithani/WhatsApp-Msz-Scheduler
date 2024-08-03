@@ -6,16 +6,17 @@ import {useNavigate} from 'react-router-dom';
 import Loader from 'react-js-loader'
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoSettings } from "react-icons/io5";
+import { SOCKET_SERVER_URL } from '../constants';
 
 // const socket = io("http://localhost:3000",{});
-const SOCKET_SERVER_URL = 'http://localhost:3000';
+
 
 export const Login = () => {
 
   const [qrCode, setQrCode] = useState("");
   const [session, setSession] = useState(0);
   const [qrLoading, setQrLoading] = useState(0);
-  const [loading, setLoading] = useState(0);
+  const [loading, setLoading] = useState(true);
   
   const [socket, setSocket] = useState(null);
 
@@ -32,8 +33,10 @@ export const Login = () => {
 
   useEffect(() => {
     // Create a new socket connection
+    setLoading(true);
     const newSocket = io(SOCKET_SERVER_URL, {});
     setSocket(newSocket);
+    setLoading(false);
 
     // Clean up the socket connection when the component unmounts
     return () => {
